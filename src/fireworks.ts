@@ -35,7 +35,7 @@ function firework(x: number, y: number, color: number) {
         particle(color, container);
     }
 
-    gsap.to(container, {pixi: {y: 500}, duration: 2, ease: 'power2.in', onComplete: () => {container.destroy()} });
+    gsap.to(container, {pixi: {y: y + 100}, duration: 2, ease: 'power2.in', onComplete: () => {container.destroy()} });
 
     return container;
 }
