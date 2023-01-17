@@ -43,6 +43,7 @@ sq1.drawRect(0, 0, 100, 100);
 sq1.endFill();
 sq1.pivot.set(50, 50);
 sq1.position.set(100, 300);
+sq1.interactive = true;
 
 const sq2 = new PIXI.Graphics();
 sq2.beginFill(0xffffff);
@@ -50,6 +51,7 @@ sq2.drawRect(0, 0, 100, 100);
 sq2.endFill();
 sq2.pivot.set(50, 50);
 sq2.position.set(300, 300);
+sq2.interactive = true;
 
 const sq3 = new PIXI.Graphics();
 sq3.beginFill(0xffffff);
@@ -57,16 +59,51 @@ sq3.drawRect(0, 0, 100, 100);
 sq3.endFill();
 sq3.pivot.set(50, 50);
 sq3.position.set(500, 300);
+sq3.interactive = true;
 
 const sq4 = new PIXI.Graphics();
 sq4.beginFill(0xffffff);
 sq4.drawRect(0, 0, 100, 100);
 sq4.endFill();
 sq4.pivot.set(50, 50);
-sq4.position.set(700, 300)
+sq4.position.set(700, 300);
+sq4.interactive = true;
 
-gsap.to([sq1, sq2, sq3, sq4], {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 2, delay: 1});
-// gsap.to(sq1, {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000, duration: 2, delay: 1});
-// gsap.to([sq1, sq2, sq3, sq4], {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000, duration: 2, delay: 1});
+const sq1Tween = gsap.to(sq1, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
+const sq2Tween = gsap.to(sq2, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
+const sq3Tween = gsap.to(sq3, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
+const sq4Tween = gsap.to(sq4, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
+
+sq1.on('pointertap', () => {
+    if (sq1Tween.progress() == 0) {
+        sq1Tween.play();
+    } else if (sq1Tween.progress() == 1) {
+        sq1Tween.reverse();
+    }
+});
+
+sq2.on('pointertap', () => {
+    if (sq2Tween.progress() == 0) {
+        sq2Tween.play();
+    } else if (sq2Tween.progress() == 1) {
+        sq2Tween.reverse();
+    }
+});
+
+sq3.on('pointertap', () => {
+    if (sq3Tween.progress() == 0) {
+        sq3Tween.play();
+    } else if (sq3Tween.progress() == 1) {
+        sq3Tween.reverse();
+    }
+});
+
+sq4.on('pointertap', () => {
+    if (sq4Tween.progress() == 0) {
+        sq4Tween.play();
+    } else if (sq4Tween.progress() == 1) {
+        sq4Tween.reverse();
+    }
+})
 
 app.stage.addChild(sq1, sq2, sq3, sq4);
