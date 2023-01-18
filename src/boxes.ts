@@ -69,10 +69,10 @@ sq4.pivot.set(50, 50);
 sq4.position.set(700, 300);
 sq4.interactive = true;
 
-const sq1Tween = gsap.to(sq1, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
-const sq2Tween = gsap.to(sq2, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
-const sq3Tween = gsap.to(sq3, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
-const sq4Tween = gsap.to(sq4, {pixi: {rotation: 360, blur: 10, skewX: 50, tint: 0xff0000}, duration: 1, paused: true});
+const sq1Tween = gsap.to(sq1, {pixi: {rotation: 360}, duration: 1, paused: true});
+const sq2Tween = gsap.to(sq2, {pixi: {blur: 10}, duration: 1, paused: true});
+const sq3Tween = gsap.to(sq3, {pixi: {skewX: 50}, duration: 1, paused: true});
+const sq4Tween = gsap.to(sq4, {pixi: {tint: 0xff0000}, duration: 1, paused: true});
 
 sq1.on('pointertap', () => {
     if (sq1Tween.progress() == 0) {
